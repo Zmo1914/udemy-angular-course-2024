@@ -6,13 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./appointment-list.component.css']
 })
 export class AppointmentListComponent {
+
+  appointment:string = 'Sample text';
+
+
+
+
+
+
   animalTitle: string = 'z';
 
   animalList: string[] = ['Lion', 'Bear', 'Rabbit', 'Fox', 'Pig'];
 
   message = 'This is message in the AppointmentListComponent class.'
 
-  private printText(s: string) {
+  printText(s: string) {
 
     console.log('This method will print ' + s)
 
