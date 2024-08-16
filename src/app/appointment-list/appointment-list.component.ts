@@ -18,16 +18,15 @@ export class AppointmentListComponent implements OnInit {
   appointments: Appointment[] = []
 
   ngOnInit(): void {
-    console.log("got loaded");
-
     let savedAppointments = localStorage.getItem("appointments");
-    let savedCounter = localStorage.getItem("counter");
-
     this.appointments = savedAppointments ? JSON.parse(savedAppointments) : [];
+
+    let savedCounter = localStorage.getItem("counter");
     this.newAppointmentCounter = savedCounter ? JSON.parse(savedCounter) : 0;
   }
 
   addAppointment() {
+
     if (this.newAppointmentTitle.trim().length && this.newAppointmentDate) {
       let newAppointment: Appointment = {
         id: Date.now(),
@@ -43,7 +42,6 @@ export class AppointmentListComponent implements OnInit {
 
       localStorage.setItem("appointments", JSON.stringify(this.appointments))
       localStorage.setItem("counter", JSON.stringify(this.newAppointmentCounter))
-
     }
 
   }
