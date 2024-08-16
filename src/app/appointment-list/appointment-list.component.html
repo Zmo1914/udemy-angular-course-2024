@@ -1,102 +1,32 @@
-<!DOCTYPE html>
+<div>
+  <input [(ngModel)]="newAppointmentTitle" placeholder="Appointment description" />
+  <input [(ngModel)]="newAppointmentDate" type="date" placeholder="Appointment date" />
+  <button (click)="addAppointment()">Add</button>
+  <label> {{newAppointmentCounter}}</label>
+</div>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<ul>
+  <li *ngFor="let appointment of appointments; index as i">
+    {{ appointment.title }} {{ appointment.date | date : "dd.MM.yyy" }} 
+    <button (click)="deleteAppointment(i)">Delete</button>
+  </li>
+</ul>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Animal Table</title>
 
-    <style>
-      body {
-        font-family: Arial, sans-serif;
 
-        margin: 20px;
-      }
 
-      table {
-        width: 50%;
 
-        border-collapse: collapse;
 
-        margin: 20px 0;
-      }
+<!-- <div>
+  <input [(ngModel)]="newAppointmentTitle" placeholder="Appointment description" />
+  <input [(ngModel)]="newAppointmentDate" type="date" placeholder="Appointment date" />
+  <button (click)="addAppointment()">Add</button>
+  <label> {{newAppointmentCounter}}</label>
+</div>
 
-      table,
-      th,
-      td {
-        border: 1px solid black;
-      }
-
-      th,
-      td {
-        padding: 8px;
-
-        text-align: left;
-      }
-
-      th {
-        background-color: #f2f2f2;
-      }
-    </style>
-  </head>
-
-  <body>
-    <h1>Table name: {{ printText("Animal species!") }}</h1>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Animal</th>
-
-          <th>Type</th>
-
-          <th>Habitat</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>{{ animalList[0] }}</td>
-
-          <td>Mammal</td>
-
-          <td>Savanna</td>
-        </tr>
-
-        <tr>
-          <td>{{ animalList[1] }}</td>
-
-          <td>Bird</td>
-
-          <td>Mountains</td>
-        </tr>
-
-        <tr>
-          <td>{{ animalList[2] }}</td>
-
-          <td>Fish</td>
-
-          <td>Ocean</td>
-        </tr>
-
-        <tr>
-          <td>{{ animalList[3] }}</td>
-
-          <td>Mammal</td>
-
-          <td>Forest</td>
-        </tr>
-
-        <tr>
-          <td>{{ animalList[4] }}</td>
-
-          <td>Mammal</td>
-
-          <td>Grasslands</td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
-</html>
+<ul>
+  <ul *ngFor="let appointment of appointments">
+    {{ appointment.id }} {{ appointment.title }} {{ appointment.date | date : "dd.MM.yyy" }}
+  </ul>
+</ul> -->

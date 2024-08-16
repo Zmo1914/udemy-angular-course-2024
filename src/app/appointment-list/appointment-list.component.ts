@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Appointment } from '../models/appointment';
 
 @Component({
   selector: 'app-appointment-list',
@@ -7,24 +8,32 @@ import { Component } from '@angular/core';
 })
 export class AppointmentListComponent {
 
-  appointment:string = 'Sample text';
+  newAppointmentTitle: string = "";
+  newAppointmentDate: Date = new Date;
+  newAppointmentCounter = 0;
 
+  appointments: Appointment[] = []
 
+  addAppointment() {
+    if (this.newAppointmentTitle.trim().length && this.newAppointmentDate) {
+      let newAppointment: Appointment = {
+        id: Date.now(),
+        title: this.newAppointmentTitle,
+        date: this.newAppointmentDate
+      }
 
+      this.appointments.push(newAppointment)
 
+      this.newAppointmentTitle = "";
+      this.newAppointmentDate = new Date();
+      this.newAppointmentCounter++;
 
+    }
 
-  animalTitle: string = 'z';
-
-  animalList: string[] = ['Lion', 'Bear', 'Rabbit', 'Fox', 'Pig'];
-
-  message = 'This is message in the AppointmentListComponent class.'
-
-  printText(s: string) {
-
-    console.log('This method will print ' + s)
-
-    return s;
   }
 
+  deleteAppointment(index: number) {
+    this.appointments.splice(index, 1);
+    this.newAppointmentCounter--;
+  }
 }
